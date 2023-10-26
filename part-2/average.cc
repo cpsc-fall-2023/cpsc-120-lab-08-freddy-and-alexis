@@ -1,4 +1,7 @@
-// TODO: Add the required header
+// Alexis Flores
+// afloress201@csu.fullerton.edu
+// @afloress201
+// Partners:@freddyflores24
 
 #include <iostream>
 #include <string>
@@ -6,11 +9,24 @@
 
 int main(int argc, char* argv[]) {
   std::vector<std::string> arguments{argv, argv + argc};
+  if (arguments.size() < 2) {
+    std::cout << "error: you must supply at least one number";
+    return 1;
+  }
 
-  // TODO: Validate that there is at least one command line argument.
+  // Validate that there is at least one command line argument.
   // If not, print an error message and return a non-zero value.
+  bool is_first{true};
+  double sum = 0;
+  for (std::string& argument : arguments) {
+    if (is_first == true) {
+      is_first = false;
+    } else {
+      sum = sum + std::stod(argument);
+    }
+  }
 
-  // TODO: Write a for-each loop to sum (add up) all of the command line
+  // Write a for-each loop to sum (add up) all of the command line
   // arguments.
   // Use a double or float type so that your program preserves fractional
   // values.
@@ -18,12 +34,14 @@ int main(int argc, char* argv[]) {
   // of the arguments vector.
   // Each argument is a std::string. You will need to convert each string into
   // a number with the std::stod or std::stof function.
-
-  // TODO: After the loop has finished summing the arguments, calculate the
+  double average{sum / (static_cast<int>(arguments.size()) - 1)};
+  std::cout << "average = ";
+  std::cout << average << "/n";
+  // After the loop has finished summing the arguments, calculate the
   // average of the values. Recall that the average is the total value divided
   // by the number of values.
 
-  // TODO: Use cout to print out a message of the form
+  // Use cout to print out a message of the form
   // average = *AVERAGE*
   // on its own line.
 
